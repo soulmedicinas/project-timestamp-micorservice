@@ -33,7 +33,11 @@ app.get("/api/:date?", (req, res) => {
     date = new Date();
   } 
 
-
+// Check if input is a Unix timestamp (number)
+  else if (!isNaN(inputDate)) {
+    date = new Date(parseInt(inputDate));
+  } 
+  
   
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
