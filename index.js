@@ -37,7 +37,12 @@ app.get("/api/:date?", (req, res) => {
   else if (!isNaN(inputDate)) {
     date = new Date(parseInt(inputDate));
   } 
-  
+
+   // Try parsing as a natural date string
+  else {
+    date = new Date(inputDate);
+  }
+
   
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
